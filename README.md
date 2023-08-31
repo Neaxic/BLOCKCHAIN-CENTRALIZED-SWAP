@@ -1,5 +1,6 @@
 # BLOCKCHAIN-CENTRALIZED-SWAP
 The swapper solidity contract for centralized, this repo reflects current deployed on the chain.
+Also contains a working testnet mint contract.
 
 Where is contract deployed? (ETH MAINNET)
 //Chain-id: address
