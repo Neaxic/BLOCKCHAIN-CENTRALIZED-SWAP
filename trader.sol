@@ -31,6 +31,8 @@ contract Swapper is Ownable {
     mapping(uint => Proposal) public proposals;
 
     event ProposalFulfilled(uint indexed _id, Proposal _proposal);
+    event ProposalAdded(uint indexed _proposalId, Proposal _proposal);
+    event ProposalCleared(uint indexed _proposalId);
 
     function addProposal(
         address _to,
@@ -53,6 +55,7 @@ contract Swapper is Ownable {
             Content memory _receiveContent = _receiveContents[i];
             proposal.receiveContents.push(_receiveContent);
         }
+        emit ProposalAdded(proposalsCount, proposal);
         return proposalsCount;
     }
 
@@ -97,6 +100,7 @@ contract Swapper is Ownable {
             "You're not the Maker of this proposal"
         );
         delete proposals[_id];
+        emit ProposalCleared(_id);
     }
 
     function performTransactionInContent(
